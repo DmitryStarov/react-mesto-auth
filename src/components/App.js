@@ -13,6 +13,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import ConfirmPopup from "./ConfirmPopup";
 import Register from "./Register";
 import Login from "./Login";
+import ProtctedRoute from "./ProtectedRoute";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -25,6 +26,7 @@ export default function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [cards, setCards] = React.useState([]);
   const [buttonText, setButtonText] = React.useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, cards]) => {
@@ -133,19 +135,21 @@ export default function App() {
           <Route
             path="/"
             element={
-              <Main
-                onEditProfile={handleEditProfileClick}
-                onAddPlace={handleAddPlaceClick}
-                onEditAvatar={handleEditAvatarClick}
-                onCardClick={handleCardClick}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
-                cards={cards}
-              />
+              <ProtctedRoute isLoggedIn={isLoggedIn}>
+                <Main
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onEditAvatar={handleEditAvatarClick}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                  cards={cards}
+                />
+              </ProtctedRoute>
             }
           />
-          <Route path='/sign-up' element={<Register />} />
-          <Route path='/sign-in' element={<Login />} />
+          <Route path="/sign-up" element={<Register />} />
+          <Route path="/sign-in" element={<Login />} />
         </Routes>
 
         <Footer />
