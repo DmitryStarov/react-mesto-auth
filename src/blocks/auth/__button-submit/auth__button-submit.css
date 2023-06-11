@@ -20,10 +20,10 @@
 
 @media screen and (max-width: 425px) {
   .auth__button-submit {
-    width: 238px;
+    width: 260px;
     height: 46px;
-    font-size: 14px;
-    line-height: 1.21;
-    margin: 15px 0 0 0;
+    font-size: 16px;
+    line-height: 1.19;
+    margin: 143px 0 0 0;
   }
 }

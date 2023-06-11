@@ -7,3 +7,9 @@
   text-align: center;
   color: #ffffff;
 }
+
+@media screen and (max-width: 425px) {
+  .auth__paragraph {
+    padding: 20px;
+  }
+}

@@ -8,9 +8,3 @@
   color: #cccccc;
   background-color: #000000;
 }
-
-@media screen and (max-width: 425px) {
-  .auth__input {
-    max-width: 238px;
-  }
-}
