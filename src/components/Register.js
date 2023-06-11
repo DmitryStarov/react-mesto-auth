@@ -43,7 +43,7 @@ export default function Register({ onRegister }) {
               onChange={handleChange}
               required
             />
-            <span className="popup__error-message">{errors.password}</span>
+            <span className="auth__error-message">{errors.password}</span>
           </label>
           <button
             type="submit"

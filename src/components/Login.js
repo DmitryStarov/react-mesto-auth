@@ -1,11 +1,11 @@
 import useValidator from "../hooks/useValidator";
 
-export default function Login({onLogin}) {
+export default function Login({ onLogin }) {
   const { inputValues, errors, handleChange, isValid } = useValidator();
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onLogin(inputValues)
+    onLogin(inputValues);
   }
   return (
     <section className="auth">
@@ -55,8 +55,6 @@ export default function Login({onLogin}) {
           </button>
         </fieldset>
       </form>
-
-     
     </section>
   );
 }

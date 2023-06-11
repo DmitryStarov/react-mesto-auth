@@ -7,6 +7,19 @@
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 
+@import url(./blocks/auth/auth.css);
+@import url(./blocks/auth/__title/auth__title.css);
+@import url(./blocks/auth/__form/auth__form.css);
+@import url(./blocks/auth/__fieldset/auth__fieldset.css);
+@import url(./blocks/auth/__field/auth__field.css);
+@import url(./blocks/auth/__input/auth__input.css);
+@import url(./blocks/auth/__error-message/auth__error-message.css);
+@import url(./blocks/auth/__button-submit/auth__button-submit.css);
+@import url(./blocks/auth/__button-submit/_disable/auth__button-submit_disable.css);
+@import url(./blocks/auth/__paragraph/auth__paragraph.css);
+@import url(./blocks/auth/__link/auth__link.css);
+
+
 @import url(./blocks/content/content.css);
 
 @import url(./blocks/profile/profile.css);
