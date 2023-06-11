@@ -13,7 +13,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import ConfirmPopup from "./ConfirmPopup";
 import Register from "./Register";
 import Login from "./Login";
-import ProtctedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -135,7 +135,7 @@ export default function App() {
           <Route
             path="/"
             element={
-              <ProtctedRoute isLoggedIn={isLoggedIn}>
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Main
                   onEditProfile={handleEditProfileClick}
                   onAddPlace={handleAddPlaceClick}
@@ -145,7 +145,7 @@ export default function App() {
                   onCardDelete={handleCardDelete}
                   cards={cards}
                 />
-              </ProtctedRoute>
+              </ProtectedRoute>
             }
           />
           <Route path="/sign-up" element={<Register />} />
