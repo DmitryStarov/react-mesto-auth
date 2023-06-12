@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import useValidator from "../hooks/useValidator";
 
-export default function Register({ onRegister }) {
+export default function Registration({ onRegistration }) {
   const { inputValues, errors, handleChange, isValid } = useValidator();
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onRegister(inputValues);
+    onRegistration(inputValues);
   }
   return (
     <section className="auth">
       <h2 className="auth__title">Регистрация</h2>
-      <form name="register" className="auth__form" onSubmit={handleSubmit}>
+      <form name="register" className="form auth__form" onSubmit={handleSubmit}>
         <fieldset className="auth__fieldset">
           <label className="auth__field">
             <input

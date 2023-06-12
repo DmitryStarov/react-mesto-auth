@@ -5,3 +5,7 @@ export const connectionSettings = {
     "Content-Type": "application/json",
   },
 };
+export const authSettings = {
+  baseUrl: "https://auth.nomoreparties.co",
+  headers: { "Content-Type": "application/json" },
+};

@@ -39,7 +39,7 @@ export default function PopupWithForm({
           onClick={onClose}
         />
         <h2 className="popup__title">{title}</h2>
-        <form name={name} className="popup__form" onSubmit={onSubmit}>
+        <form name={name} className="form popup__form" onSubmit={onSubmit}>
           <fieldset className="popup__fieldset">
             {children}
             <button

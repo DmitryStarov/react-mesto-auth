@@ -33,10 +33,10 @@ export default function InfoTooltip({ onClose, toolTipMessage }) {
         />
         <img
           className="popup__info-image"
-          src={tooltipMessage?.isSuccess ? succesfully : failure}
+          src={toolTipMessage?.isSuccess ? succesfully : failure}
         />
         <h2 className="popup__title popup__title_info">
-          {toolTipMessage.text}
+          {toolTipMessage?.text}
         </h2>
       </div>
     </div>

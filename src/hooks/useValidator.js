@@ -9,7 +9,7 @@ export default function useValidator(values = {}) {
     const { value, name } = evt.target;
     setInputValues({ ...inputValues, [name]: value });
     setErrors({ ...errors, [name]: evt.target.validationMessage });
-    setIsValid(evt.target.closest(".popup__form").checkValidity());
+    setIsValid(evt.target.closest(".form").checkValidity());
   }
 
   function resetValidation() {

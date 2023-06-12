@@ -10,7 +10,7 @@ export default function Login({ onLogin }) {
   return (
     <section className="auth">
       <h2 className="auth__title">Вход</h2>
-      <form name="login" className="auth__form" onSubmit={handleSubmit}>
+      <form name="login" className="form auth__form" onSubmit={handleSubmit}>
         <fieldset className="auth__fieldset">
           <label className="auth__field">
             <input
