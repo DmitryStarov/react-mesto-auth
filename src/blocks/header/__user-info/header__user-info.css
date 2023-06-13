@@ -3,6 +3,7 @@
   gap: 24px;
   font-size: 18px;
   line-height: 1.22;
+  background-color: #000000;
 }
 
 @media screen and (max-width: 767px) {
