@@ -3,6 +3,8 @@
   max-width: 880px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   margin: 0 auto;
+  justify-content: space-between;
+  align-items: center
 }
 
 @media screen and (max-width: 900px) {

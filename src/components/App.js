@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "../App.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -49,7 +49,8 @@ export default function App() {
         .checkToken(jwt)
         .then((data) => {
           if (data) {
-            setEmailUser(data.email);
+            setEmailUser(data.data.email);
+            console.log(emailUser);
             setIsLoggedIn(true);
             navigate("/", { replace: true });
           }
@@ -58,7 +59,7 @@ export default function App() {
           console.log(error);
         });
     }
-  }, []);
+  }, [emailUser, navigate]);
 
   function handleRegistration(data) {
     auth
@@ -200,7 +201,7 @@ function handleSignOut (){
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header />
+        <Header emailUser={emailUser} onSignOut={handleSignOut}/>
         <Routes>
           <Route
             path="/"
