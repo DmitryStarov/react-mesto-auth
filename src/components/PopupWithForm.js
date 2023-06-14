@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 export default function PopupWithForm({
   name,
   title,
@@ -13,7 +13,7 @@ export default function PopupWithForm({
   function handleOverlayClick(evt) {
     if (evt.target === evt.currentTarget) onClose();
   }
-  React.useEffect(() => {
+  useEffect(() => {
     if (resetValidation) {
       resetValidation();
     }

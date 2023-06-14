@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import succesfully from "../image/successfully.svg";
 import failure from "../image/failure.svg";
 
@@ -6,8 +6,8 @@ export default function InfoTooltip({ onClose, toolTipMessage }) {
   function handleOverlayClick(evt) {
     if (evt.target === evt.currentTarget) onClose();
   }
-  
-  React.useEffect(() => {
+
+  useEffect(() => {
     const handleEscClose = (evt) => {
       if (evt.key === "Escape") onClose();
     };
@@ -16,7 +16,7 @@ export default function InfoTooltip({ onClose, toolTipMessage }) {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [toolTipMessage]);
+  }, [toolTipMessage, onClose]);
 
   return (
     <div
@@ -34,6 +34,7 @@ export default function InfoTooltip({ onClose, toolTipMessage }) {
         <img
           className="popup__info-image"
           src={toolTipMessage?.isSuccess ? succesfully : failure}
+          alt='зеленая галочка при удачном запросе красный крестик при неудачном запросе'
         />
         <h2 className="popup__title popup__title_info">
           {toolTipMessage?.text}

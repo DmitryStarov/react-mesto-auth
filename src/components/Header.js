@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import logo from "../image/logo.svg";
 
 export default function Header({ emailUser, onSignOut }) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   function handleOpenMenu() {
     setIsMenuOpen(!isMenuOpen);
   }

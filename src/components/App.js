@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "../App.css";
 import Header from "./Header";
@@ -18,31 +18,20 @@ import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
 
 export default function App() {
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
-    React.useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
-    React.useState(false);
-  const [deletedCard, setDeletedCard] = React.useState(null);
-  const [selectedCard, setSelectedCard] = React.useState(null);
-  const [cards, setCards] = React.useState([]);
-  const [buttonText, setButtonText] = React.useState("");
-  const [emailUser, setEmailUser] = React.useState("");
-  const [tooltipMessage, setTooltipMessage] = React.useState(null);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [deletedCard, setDeletedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [cards, setCards] = useState([]);
+  const [buttonText, setButtonText] = useState("");
+  const [emailUser, setEmailUser] = useState("");
+  const [tooltipMessage, setTooltipMessage] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cards]) => {
-        setCurrentUser(userData);
-        setCards(cards);
-      })
-      .catch((error) => console.log(`Ошибка: ${error}`));
-  }, []);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       auth
@@ -50,7 +39,6 @@ export default function App() {
         .then((data) => {
           if (data) {
             setEmailUser(data.data.email);
-            console.log(emailUser);
             setIsLoggedIn(true);
             navigate("/", { replace: true });
           }
@@ -60,6 +48,15 @@ export default function App() {
         });
     }
   }, [emailUser, navigate]);
+
+  useEffect(() => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, cards]) => {
+        setCurrentUser(userData);
+        setCards(cards);
+      })
+      .catch((error) => console.log(`Ошибка: ${error}`));
+  }, []);
 
   function handleRegistration(data) {
     auth
@@ -101,11 +98,11 @@ export default function App() {
         console.log(`Ошибка: ${error}`);
       });
   }
-function handleSignOut (){
-  localStorage.removeItem('jwt');
-  setIsLoggedIn(false);
-  navigate('/sign-in', { replace: true });
-}
+  function handleSignOut() {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    navigate("/sign-in", { replace: true });
+  }
   function handleEditAvatarClick() {
     setButtonText("Сохранить");
     setIsEditAvatarPopupOpen(true);
@@ -201,7 +198,7 @@ function handleSignOut (){
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header emailUser={emailUser} onSignOut={handleSignOut}/>
+        <Header emailUser={emailUser} onSignOut={handleSignOut} />
         <Routes>
           <Route
             path="/"

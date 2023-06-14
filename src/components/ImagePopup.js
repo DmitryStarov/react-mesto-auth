@@ -1,10 +1,11 @@
-import React from "react";
+import { useEffect } from "react";
 
 export default function ImagePopup({ card, onClose }) {
   function handleOverlayClick(evt) {
     if (evt.target === evt.currentTarget) onClose();
   }
-  React.useEffect(() => {
+
+  useEffect(() => {
     const handleEscClose = (evt) => {
       if (evt.key === "Escape") onClose();
     };

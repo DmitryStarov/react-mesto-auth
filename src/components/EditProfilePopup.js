@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 import useValidator from "../hooks/useValidator";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -18,7 +18,7 @@ export default function EditProfilePopup({
     isValid,
   } = useValidator();
 
-  const { name, about } = React.useContext(CurrentUserContext);
+  const { name, about } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setInputValues({ name, about });
