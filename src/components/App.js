@@ -50,13 +50,15 @@ export default function App() {
   }, [emailUser, navigate]);
 
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cards]) => {
-        setCurrentUser(userData);
-        setCards(cards);
-      })
-      .catch((error) => console.log(`Ошибка: ${error}`));
-  }, []);
+    if (isLoggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userData, cards]) => {
+          setCurrentUser(userData);
+          setCards(cards);
+        })
+        .catch((error) => console.log(`Ошибка: ${error}`));
+    }
+  }, [isLoggedIn]);
 
   function handleRegistration(data) {
     auth
